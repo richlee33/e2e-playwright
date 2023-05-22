@@ -18,15 +18,15 @@ $ pip install -r requirements.txt
 ## Run
 ### Run all tests: 
 ```sh
-$ pytest tests
+$ pytest
 ```
 
 ### Run in headed mode and slow down operations: 
 ```sh
-$ pytest --headed --slowmo 1000 tests
+$ pytest --headed --slowmo 1000
 ```
 
 ### Run with Playwright Inspector: 
 ```sh
-$ PWDEBUG=1 pytest -s tests
+$ PWDEBUG=1 pytest -s
 ```
