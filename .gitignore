@@ -1,0 +1,13 @@
+*.pyc
+*.db
+*.backup
+*.swp
+*__pycache__
+.idea
+/hide
+/bin
+/lib
+/local
+/include
+.DS_STORE
+pyvenv.cfg
