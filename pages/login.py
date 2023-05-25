@@ -1,5 +1,4 @@
 from utils import users
-import pages.inventory
 
 
 class LoginPage():
@@ -31,7 +30,6 @@ class LoginPage():
 
     def login_valid_user(self, user):
         self.login(user)
-        return pages.inventory.InventoryPage(self.page)
 
     def login_with_invalid_user(self, user):
         self.login(user)

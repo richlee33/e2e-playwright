@@ -2,6 +2,7 @@ import pytest
 import re
 from playwright.sync_api import Page, expect
 from pages.login import LoginPage
+from pages.inventory import InventoryPage
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -20,7 +21,8 @@ def test_pageload(page: Page):
 
 def test_valid_user(page: Page):
     login_page = LoginPage(page)
-    inventory_page = login_page.login_valid_user("standard_user")
+    login_page.login_valid_user("standard_user")
+    inventory_page = InventoryPage(page)
     expect(inventory_page.page).to_have_url(re.compile(inventory_page.get_expected_url()))
 
 def test_invalid_user(page: Page):
