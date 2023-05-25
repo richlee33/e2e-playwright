@@ -1,6 +1,3 @@
-import pages.inventory
-
-
 class CheckoutCompletePage():
     def __init__(self, page):
         self.page = page
@@ -10,4 +7,3 @@ class CheckoutCompletePage():
 
     def click_back_home_button(self):
         self.BACK_HOME_BUTTON.click()
-        return pages.inventory.InventoryPage(self.page)

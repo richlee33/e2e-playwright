@@ -1,5 +1,4 @@
 from utils import users
-import pages.checkout_2
 
 
 class Checkout1Page():
@@ -29,7 +28,6 @@ class Checkout1Page():
 
     def click_continue(self):
         self.CONTINUE_CHECKOUT_BUTTON.click()
-        return pages.checkout_2.Checkout2Page(self.page)
 
     def click_cancel(self):
         self.CANCEL_BUTTON.click()

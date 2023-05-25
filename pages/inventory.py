@@ -1,6 +1,3 @@
-import pages.cart
-
-
 class InventoryPage():
     def __init__(self, page):
         self.page = page
@@ -20,5 +17,3 @@ class InventoryPage():
 
     def click_view_cart(self):
         self.CART.click()
-        return pages.cart.CartPage(self.page)
-
