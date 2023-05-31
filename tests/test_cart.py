@@ -1,19 +1,15 @@
 import pytest
 import re
 from playwright.sync_api import Page, expect
-from pages.login import LoginPage
+from tests.base_test import go_home_and_login_standard_user
 from pages.inventory import InventoryPage
 from pages.cart import CartPage
 
+
 @pytest.fixture(scope="function", autouse=True)
-def before_each_after_each(page: Page):
-    print("beforeEach")
-    # Go to the starting url and log in before each test.
-    page.goto("https://www.saucedemo.com/")
-    login_page = LoginPage(page)
-    login_page.login_valid_user("standard_user")
+def before_each_after_each (page: Page):
+    go_home_and_login_standard_user(page)
     yield
-    print("afterEach")
 
 def test_url(page: Page):
     inventory_page = InventoryPage(page)
