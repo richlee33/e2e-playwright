@@ -1,17 +1,15 @@
 import pytest
 import re
 from playwright.sync_api import Page, expect
+from tests.base_test import go_home, go_home_and_login_standard_user
 from pages.login import LoginPage
 from pages.inventory import InventoryPage
 
 
 @pytest.fixture(scope="function", autouse=True)
 def before_each_after_each(page: Page):
-    print("beforeEach")
-    # Go to the starting url before each test.
-    page.goto("https://www.saucedemo.com/")
+    go_home(page)
     yield
-    print("afterEach")
 
 def test_pageload(page: Page):
     EXPECTED_LOGO_TEXT = "Swag Labs"
