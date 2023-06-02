@@ -10,7 +10,7 @@ from pages.checkout_complete import CheckoutCompletePage
 
 class TestCheckout(BaseTest):
     @pytest.fixture(scope="function", autouse=True)
-    def before_each_after_each (self, page: Page):
+    def before_each_after_each(self, page: Page):
         self.go_home_and_login_standard_user(page)
         yield
 
@@ -18,7 +18,7 @@ class TestCheckout(BaseTest):
         inventory_page = InventoryPage(page)
         expect(inventory_page.page).to_have_url(re.compile(".*inventory"))
 
-        inventory_page.add_cart_bike_light()
+        inventory_page.add_cart("bikelight")
         inventory_page.click_view_cart()
 
         cart_page = CartPage(page)
@@ -40,13 +40,13 @@ class TestCheckout(BaseTest):
 
     def test_checkout_scenario_continue_shopping(self, page: Page):
         inventory_page = InventoryPage(page)
-        inventory_page.add_cart_bike_light()
+        inventory_page.add_cart("bikelight")
         inventory_page.click_view_cart()
 
         cart_page = CartPage(page)
         cart_page.click_continue_shopping()
 
-        inventory_page.add_cart_backpack()
+        inventory_page.add_cart("backpack")
         inventory_page.click_view_cart()
 
         cart_page.click_checkout()

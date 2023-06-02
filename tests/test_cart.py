@@ -8,7 +8,7 @@ from pages.cart import CartPage
 class TestCart(BaseTest):
 
     @pytest.fixture(scope="function", autouse=True)
-    def before_each_after_each (self, page: Page):
+    def before_each_after_each(self, page: Page):
         self.go_home_and_login_standard_user(page)
         yield
 
@@ -21,8 +21,8 @@ class TestCart(BaseTest):
 
     def test_cart_badge_2_items(self, page: Page):
         inventory_page = InventoryPage(page)
-        inventory_page.add_cart_bike_light()
-        inventory_page.add_cart_backpack()
+        inventory_page.add_cart("bikelight")
+        inventory_page.add_cart("backpack")
         inventory_page.click_view_cart()
 
         cart_page = CartPage(page)
