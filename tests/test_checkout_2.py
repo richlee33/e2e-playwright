@@ -1,5 +1,4 @@
 import pytest
-import re
 from playwright.sync_api import Page, expect
 from tests.base_test import BaseTest
 from pages.inventory import InventoryPage
@@ -14,12 +13,13 @@ class TestCheckout2(BaseTest):
         self.go_home_and_login_standard_user(page)
         yield
 
-    testcases_summary_total = [ ("bikelight", "backpack", "39.98"),
-                                ("bolttshirt", "jacket", "65.98"),
-                                ]
+    testcases_item_total = [
+        ("bikelight", "backpack", "39.98"),
+        ("bolttshirt", "jacket", "65.98"),
+    ]
 
-    @pytest.mark.parametrize("item_1, item_2, total", testcases_summary_total)
-    def test_summary_total(self, page: Page, item_1, item_2, total):
+    @pytest.mark.parametrize("item_1, item_2, total", testcases_item_total)
+    def test_item_total(self, page: Page, item_1, item_2, total):
         inventory_page = InventoryPage(page)
         inventory_page.add_cart(item_1)
         inventory_page.add_cart(item_2)
@@ -35,4 +35,4 @@ class TestCheckout2(BaseTest):
         checkout_2_page = Checkout2Page(page)
         item_total = checkout_2_page.get_item_total()
         print(item_total)
-        assert total in item_total
+        assert total in item_total, "Item total value does not match expected total"
