@@ -1,6 +1,3 @@
-import pages.checkout_complete
-
-
 class Checkout2Page():
     def __init__(self, page):
         self.page = page
